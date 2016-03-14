@@ -41,7 +41,7 @@ Download and install DIS plugin
   - Verified "_Build: 2 succeeded, 0 failed, 0 up-to-date, 0 skipped_"
 7. You are now ready to simulate UAV swarms using HIL
   - Edit _swarm.epp_ to configure your swarm
-  - Run the batch file, _makeEdl.bat_, to compile your inputs into the _swarm.edl_ file
+  - Run the batch file, _makeEdl.bat_, to compile your inputs into an EDL file, _swarm.edl_
   - Right-click **swarmSim** and select _Set as StartUp Project_ if not already set
   - Press `F5` or select the _Local Windows Debugger_ play button to run the project
 8. View your swarm using SIMDIS
