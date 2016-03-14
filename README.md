@@ -50,4 +50,4 @@ Download and install DIS plugin
   - Under _Network Settings_, ensure "_DIS IP Address_" and "_Network Interface_" are  
     both set to **127.0.0.1** and "_DIS Port_" is set to **3000**
   - Click the `Connect` button and `Close`
-  - You should not see your swarm and have the ability to interact with it (i.e. zoom, pan, tilt, follow, etc.)
+  - You should now see your swarm and have the ability to interact with it (i.e. zoom, pan, tilt, follow, etc.)
