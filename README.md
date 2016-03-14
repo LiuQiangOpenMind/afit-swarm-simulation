@@ -36,7 +36,7 @@ Download and install DIS plugin
   - Verified "_Build: 15 succeeded, 0 failed, 0 up-to-date, 0 skipped_"
   - Close VS2013
 6. Open _afit-swarm-simulation\OpenEaaglesSwarmSim\build\vs2013\_**swarmdev.sln** with VS2013 and built project
-  - Right click "Solution 'swarms' (2 project)"
+  - Right click "Solution 'swarmdev' (2 project)"
   - Select "Build Solution" `(F7)`
   - Verified "_Build: 2 succeeded, 0 failed, 0 up-to-date, 0 skipped_"
 7. You are now ready to simulate UAV swarms using HIL
