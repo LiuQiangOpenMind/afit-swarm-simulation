@@ -35,7 +35,7 @@ Download and install DIS plugin
   - Select "Build Solution 'F7'"
   - Verified "_Build: 15 succeeded, 0 failed, 0 up-to-date, 0 skipped_"
   - Close VS2013
-6. Open afit-swarm-simulation\OpenEaaglesSwarmSim\build\vs2013\swarmdev.sln with VS2013 and built project
+6. Open _afit-swarm-simulation\OpenEaaglesSwarmSim\build\vs2013\_**swarmdev.sln** with VS2013 and built project
   - Right click "Solution 'swarms' (2 project)"
   - Select "Build Solution 'F7'"
   - Verified "_Build: 2 succeeded, 0 failed, 0 up-to-date, 0 skipped_"
