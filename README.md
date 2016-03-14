@@ -29,8 +29,8 @@ Download and install DIS plugin
 1. Install Visual Studio 2013
 2. Install SIMDIS
 3. Clone or unzip this repository to your computer
-4. Double-click on _afit-swarm-simulation\OpenEaagles\build\premake\**make.bat**_
-5. Open _afit-swarm-simulation\OpenEaagles\build\vs2013\**oe.sln**_ with VS2013 and built project
+4. Double-click on _afit-swarm-simulation\OpenEaagles\build\premake\_**make.bat**
+5. Open _afit-swarm-simulation\OpenEaagles\build\vs2013\_**oe.sln** with VS2013 and built project
   - Right click "Solution 'oe' (15 projects)"
   - Select "Build Solution 'F7'"
   - Verified "_Build: 15 succeeded, 0 failed, 0 up-to-date, 0 skipped_"
