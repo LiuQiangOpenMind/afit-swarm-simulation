@@ -8,10 +8,14 @@
 		latitude: 39.0084648
 		longitude: -104.8887177
 
-		numTcThreads: 20
-		numBgThreads: 4
-		enableTimingStats: true
-		printTimingStats: true
+		// Set these to match your computer's capabilities
+		// e.g. with 8 cores, 7 are assigned to update time-critical tasks and 1 to update background (i.e. non-time-critical) tasks
+		numTcThreads: 7
+		numBgThreads: 1
+
+		// enable these to see timing statistics
+		enableTimingStats: false
+		printTimingStats: false
 
 		players: {
 
