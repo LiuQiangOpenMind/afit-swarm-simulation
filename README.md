@@ -23,7 +23,7 @@ Download and install [SIMDIS](https://simdis.nrl.navy.mil)
 
 Download and install DIS plugin
 - Download and follow directions in _SIMDIS_DIS_Plugin.pdf_  
-  (From the Menu under "_Downloads\Archives\Plug-ins\DIS\DIS Plug-in Documentation_")
+  (From the **Menu** under "_Downloads\Archives\Plug-ins\DIS\DIS Plug-in Documentation_")
 
 ### SwarmSim Installation and Setup
 1. Install Visual Studio 2013
@@ -50,5 +50,3 @@ Download and install DIS plugin
   - Under _Network Settings_, ensure _DIS IP Address_ and _Network Interface_ are both set to 127.0.0.1 and _DIS Port_ is set to 3000
   - Click the 'Connect' button and 'Close'
   - You should not see your swarm and have the ability to interact with it (i.e. zoom, pan, tilt, follow, etc.)
-  - 
-  - 
