@@ -22,7 +22,7 @@ Download and install [SIMDIS](https://simdis.nrl.navy.mil)
 - Follow installer directions
 
 Download and install DIS plugin
-- Download and follow directions in _SIMDIS_DIS_Plugin.pdf_
+- Download and follow directions in _SIMDIS_DIS_Plugin.pdf_  
   (From the Menu under Downloads\Archives\Plug-ins\DIS\DIS Plug-in Documentation)
 
 ### SwarmSim Installation and Setup
