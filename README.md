@@ -26,8 +26,8 @@ Download and install DIS plugin
   (From the **Menu** under "_Downloads\Archives\Plug-ins\DIS\DIS Plug-in Documentation_")
 
 ### SwarmSim Installation and Setup
-1. Install Visual Studio 2013
-2. Install SIMDIS
+1. Install **Visual Studio 2013**
+2. Install **SIMDIS**
 3. Clone or unzip this repository to your computer
 4. Double-click on _afit-swarm-simulation\OpenEaagles\build\premake\_**make.bat**
 5. Open _afit-swarm-simulation\OpenEaagles\build\vs2013\_**oe.sln** with VS2013 and built project
