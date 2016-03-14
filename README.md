@@ -43,10 +43,10 @@ Download and install DIS plugin
   - Edit _swarm.epp_ to configure your swarm
   - Run the batch file, _makeEdl.bat_, to compile your inputs into an EDL file, _swarm.edl_
   - Right-click **swarmSim** and select _Set as StartUp Project_ if not already set
-  - Press `F5` or select the _Local Windows Debugger_ play button to run the project
+  - Press `(F5)` or select the _Local Windows Debugger_ play button to run the project
 8. View your swarm using SIMDIS
   - Startup SIMDIS and load the DIS plugin if not automatically loaded
-  - From the _Plug-in Tools_ menu, select _DIS..._ or press `[`
+  - From the _Plug-in Tools_ menu, select _DIS..._ or press `([)`
   - Under _Network Settings_, ensure _DIS IP Address_ and _Network Interface_ are both set to 127.0.0.1 and _DIS Port_ is set to 3000
   - Click the `Connect` button and `Close`
   - You should not see your swarm and have the ability to interact with it (i.e. zoom, pan, tilt, follow, etc.)
