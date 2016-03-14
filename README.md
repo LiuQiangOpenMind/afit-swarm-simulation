@@ -17,7 +17,7 @@ SIMDIS is targeted for Linux and Windows that have hardware accelerated 3D graph
 ### SIMDIS Installation:
 Download and install [SIMDIS](https://simdis.nrl.navy.mil)
 - You will need to create an account to access the site
-- From the **Menu** under "_Downloads\Archives\SIMDIS 9.5.0 (SR7)_" select _Download Full_
+- From the **Menu** under "_Downloads\Archives\SIMDIS 9.5.0 (SR7)_" select **Download Full**
 - Select and download the appropriate installer for your system
 - Follow installer directions
 
