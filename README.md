@@ -1,21 +1,14 @@
 # AFIT Swarm Simulation
--------
-This repository contains the code for modeling UAV swarms using
-Hardware-in-the-Loop to connect Pixhawk autopilots to instances
-of JSBSim.
 
-A Sept 2015 version of the OpenEaagles simulation framework ('OpenEaagles' and
-'OpenEaagles3rdParty' directories) is included as well as extension to that
-framework ('OpenEaaglesSwarmSims') that enables the modeling of UAV swarms.
+This repository contains the code for modeling UAV swarms using Hardware-in-the-Loop to connect [Pixhawk](https://pixhawk.org/choice) autopilots to instances of [JSBSim](http://jsbsim.sourceforge.net/).
 
-For the latest OpenEaagles source code, see:
-[GitHub](https://github.com/doughodson) or [OE](http://www.openeaagles.org/)
+A Sept 2015 version of the OpenEaagles simulation framework ('OpenEaagles' and 'OpenEaagles3rdParty' directories) is included as well as extension to that framework ('OpenEaaglesSwarmSims') that enables the modeling of UAV swarms.
 
-The Excel spreadsheet title "UAV_Waypoints.xlsx" generates random swarming UAVs
-used in the swarmSim project.
+For the latest OpenEaagles source code, see: [GitHub](https://github.com/doughodson) or [OE](http://www.openeaagles.org/)
 
-SIMDIS
--------
+The Excel spreadsheet title "UAV_Waypoints.xlsx" generates random swarming UAVs used in the swarmSim project.
+
+### SIMDIS
 
 SIMDIS with a DIS plugin is used to provide the visual interface for simulations
 in this project.
