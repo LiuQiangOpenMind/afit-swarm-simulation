@@ -1,5 +1,5 @@
 # AFIT Swarm Simulation
-This repository contains the code for modeling UAV swarms using Hardware-in-the-Loop (HIL) to connect [Pixhawk](https://pixhawk.org/choice)<sup>[1](#myfootnote1)</sup> autopilots to instances of [JSBSim](http://jsbsim.sourceforge.net/).
+This repository contains the code for modeling UAV swarms using Hardware-in-the-Loop (HIL) to connect [Pixhawk](https://pixhawk.org/choice)<sup>[\[1\]](#myfootnote1)</sup> autopilots to instances of [JSBSim](http://jsbsim.sourceforge.net/).
 
 A Sept 2015 version of the OpenEaagles simulation framework ('OpenEaagles' and 'OpenEaagles3rdParty' directories) is included as well as extension to that framework ('OpenEaaglesSwarmSims') that enables the modeling of UAV swarms.
 
@@ -52,4 +52,4 @@ Download and install DIS plugin
   - Click the `Connect` button and `Close`
   - You should now see your swarm and have the ability to interact with it (i.e. pan, tilt, zoom, follow, etc.)
 
-<sub><a name="myfootnote1">1</a>: Note: Pixhawk autopilots used here are loaded with the px4fmu-v2\_default.px4 firmware Standard Version (stable) using [QGroundControl](https://pixhawk.org/firmware/downloads). To increase fight stability while swarming, the FW\_P\_LIM\_MAX parameter (positive pitch limit) was changed from its default value of 45.0 to 15.0. FW\_P\_RMAX\_POS and FW\_P\_RMAX\_NEG (maximum positive and negative pitch rates) were both changed from their default value of 60.0 to 10.0. All other parameters remained unchanged from their default values.</sub>
+<sub><a name="myfootnote1">[1]</a>: Note: Pixhawk autopilots used here are loaded with the px4fmu-v2\_default.px4 firmware Standard Version (stable) using [QGroundControl](https://pixhawk.org/firmware/downloads). To increase fight stability while swarming, the FW\_P\_LIM\_MAX parameter (positive pitch limit) was changed from its default value of 45.0 to 15.0. FW\_P\_RMAX\_POS and FW\_P\_RMAX\_NEG (maximum positive and negative pitch rates) were both changed from their default value of 60.0 to 10.0. All other parameters remained unchanged from their default values.</sub>
