@@ -1,5 +1,5 @@
 # AFIT Swarm Simulation
-This repository contains the code for modeling UAV swarms using Hardware-in-the-Loop (HIL) to connect <sup>[1](#myfootnote1)</sup>[Pixhawk](https://pixhawk.org/choice) autopilots to instances of [JSBSim](http://jsbsim.sourceforge.net/).
+This repository contains the code for modeling UAV swarms using Hardware-in-the-Loop (HIL) to connect [Pixhawk](https://pixhawk.org/choice)<sup>[1](#myfootnote1)</sup> autopilots to instances of [JSBSim](http://jsbsim.sourceforge.net/).
 
 A Sept 2015 version of the OpenEaagles simulation framework ('OpenEaagles' and 'OpenEaagles3rdParty' directories) is included as well as extension to that framework ('OpenEaaglesSwarmSims') that enables the modeling of UAV swarms.
 
