@@ -40,7 +40,7 @@ Download and install DIS plugin
   - Select "Build Solution" `(F7)`
   - Verified "_Build: 2 succeeded, 0 failed, 0 up-to-date, 0 skipped_"
 7. You are now ready to simulate UAV swarms using HIL
-  - Edit _swarm.epp_ to configure your swarm
+  - Edit _swarm.epp_ to configure your swarm<sup>[\[2\]](#myfootnote2)</sup>
   - Run the batch file, _makeEdl.bat_, to compile your inputs into an EDL file, _swarm.edl_
   - Right-click **swarmSim** and select "_Set as StartUp Project_" if not already set
   - Press `(F5)` or click the `Local Windows Debugger` play button to run the project
@@ -53,3 +53,5 @@ Download and install DIS plugin
   - You should now see your swarm and have the ability to interact with it (i.e. pan, tilt, zoom, follow, etc.)
 
 <sub><a name="myfootnote1">[1]</a> Note: Pixhawk autopilots used here are flashed with the px4fmu-v2\_default.px4 firmware Standard Version (stable) using [QGroundControl](https://pixhawk.org/firmware/downloads). To increase fight stability while swarming, the FW\_P\_LIM\_MAX parameter (positive pitch limit) was changed from its default value of 45.0 to 15.0. FW\_P\_RMAX\_POS and FW\_P\_RMAX\_NEG (maximum positive and negative pitch rates) were both changed from their default value of 60.0 to 10.0. All other parameters remained unchanged from their default values. Also note that the Pixhawk safety switch must be installed and used to disable the safety mode.</sub>
+
+<sub><a name="myfootnote2">[2]</a> For more information on the Eaagles Definition Language, see _Basic Package Classes Slides_ under the [Documentation](http://www.openeaagles.org/wiki/doku.php?id=documentation:documentation) section of the OpenEaagles website.</sub>
