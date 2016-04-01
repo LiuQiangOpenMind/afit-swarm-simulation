@@ -623,6 +623,15 @@ void PixhawkAP::updatePX4() {
 	if (heartbeat_time <= usecSinceSystemBoot()) {
 		heartbeat_time += 1000000; // advance by 1 sec (1M usec) = 1 Hz
 		sendHeartbeat();
+
+		// send set_mode
+		//cout << (int)hbBaseMode << " | " << (int)hbCustomMode << " :: " << (hbBaseMode != 189) << " | " << (hbCustomMode != 67371008) << endl;
+		if (hbBaseMode == 189 && hbCustomMode != 67371008) {
+			// set to 189 with custom mode to 67371008
+			//cout << "Sent setmode of 189 and 67371008" << endl;
+			mavlink_msg_set_mode_pack(sid, cid, &msg2, 1, 189, 67371008);
+			sendMessage(&msg2);
+		}
 	}
 
 	if (hil_sensor_time <= usecSinceSystemBoot()) {
@@ -676,20 +685,21 @@ void PixhawkAP::receive() {
 					// Process mavlink messages
 					switch (rcvMsg.msgid) {
 					case MAVLINK_MSG_ID_HEARTBEAT:
-						//cout << "PX4 Heartbeat = type: " << (int)mavlink_msg_heartbeat_get_type(&rcvMsg) <<
-						//	" | autopilot: " << (int)mavlink_msg_heartbeat_get_autopilot(&rcvMsg) <<
-						//	" | base_mode: " << (int)mavlink_msg_heartbeat_get_base_mode(&rcvMsg) <<
-						//	" | custom_mode: " << (int)mavlink_msg_heartbeat_get_custom_mode(&rcvMsg) <<
-						//	" | system_status: " << (int)mavlink_msg_heartbeat_get_system_status(&rcvMsg) <<
-						//	" | mavlink_version: " << (int)mavlink_msg_heartbeat_get_mavlink_version(&rcvMsg) << endl;
-						setHbSid(rcvMsg.sysid);
-						setHbCid(rcvMsg.compid);
-						setHbType(mavlink_msg_heartbeat_get_type(&rcvMsg));
-						setHbAutopilot(mavlink_msg_heartbeat_get_autopilot(&rcvMsg));
-						setHbBaseMode(mavlink_msg_heartbeat_get_base_mode(&rcvMsg));
-						setHbCustomMode(mavlink_msg_heartbeat_get_custom_mode(&rcvMsg));
-						setHbSystemStatus(mavlink_msg_heartbeat_get_system_status(&rcvMsg));
-						setHbMavlinkVersion(mavlink_msg_heartbeat_get_mavlink_version(&rcvMsg));
+						hbSid            = rcvMsg.sysid;
+						hbCid            = rcvMsg.compid;
+						hbType           = mavlink_msg_heartbeat_get_type(&rcvMsg);
+						hbAutopilot      = mavlink_msg_heartbeat_get_autopilot(&rcvMsg);
+						hbBaseMode       = mavlink_msg_heartbeat_get_base_mode(&rcvMsg);
+						hbCustomMode     = mavlink_msg_heartbeat_get_custom_mode(&rcvMsg);
+						hbSystemStatus   = mavlink_msg_heartbeat_get_system_status(&rcvMsg);
+						hbMavlinkVersion = mavlink_msg_heartbeat_get_mavlink_version(&rcvMsg);
+
+						//cout << "PX4 Heartbeat = type: " << (int)hbType <<
+						//	" | autopilot: " << (int)hbAutopilot <<
+						//	" | base_mode: " << (int)hbBaseMode <<
+						//	" | custom_mode: " << (int)hbCustomMode <<
+						//	" | system_status: " << (int)hbSystemStatus <<
+						//	" | mavlink_version: " << (int)hbMavlinkVersion << endl;
 						break;
 					case MAVLINK_MSG_ID_MISSION_ITEM:
 						setMiLat(mavlink_msg_mission_item_get_x(&rcvMsg));
@@ -720,7 +730,6 @@ void PixhawkAP::receive() {
 						hcThrottleCtrl =  mavlink_msg_hil_controls_get_throttle(&rcvMsg);
 						hcSysMode      =  mavlink_msg_hil_controls_get_mode(&rcvMsg);
 						hcNavMode      =  mavlink_msg_hil_controls_get_nav_mode(&rcvMsg);
-						
 						//cout << "\rroll/pitch/yaw =\t" << hcRollCtrl << "\t" << hcPitchCtrl << "\t" << hcYawCtrl << "                                                   ";
 						break;
 					case MAVLINK_MSG_ID_STATUSTEXT:
@@ -730,6 +739,11 @@ void PixhawkAP::receive() {
 						} else if (strstr(text, "Not yet ready for mission, no position lock") != nullptr) {
 							readyForMission = false;
 						}
+						//else if (strstr(text, "Waypoint 0 below home") != nullptr) {
+						//	cout << "HELLO WORLD!" << endl;
+						//	sendMessage(&msg2);
+						//	mavlink_msg_command_long_pack(sid, cid, &msg2, 1, 1, 179, 0, 1, 0, 0, 0, 0, 0, 0);
+						//}
 						if (strcmp(getStatustexts(), "on") == 0) {
 							cout << "\nStatus Text(" << getOwnship()->getID() << "): " << text << endl;
 						}
@@ -748,27 +762,28 @@ void PixhawkAP::receive() {
 
 // SET_MODE (11)
 void PixhawkAP::sendSetMode() {
-	if (hbBaseMode == 189) {
+	if (hbBaseMode == 189) {//&& hbCustomMode == 67371008) {
 		return;
-	} else if (hbBaseMode == 65 || hbBaseMode == 97 || hbBaseMode == 225) {
-		cout << "Base mode is: " << (int)hbBaseMode << " | ";
 	}
+	//else if (hbBaseMode == 65 || hbBaseMode == 97 || hbBaseMode == 225 || hbBaseMode == 189) {
+	//	cout << "Base mode is: " << (int)hbBaseMode << " | ";
+	//}
 
 	if (hbBaseMode == 65) {
 		// set to 97
-		cout << "Attempting to set to: 97" << endl;
+		//cout << "Attempting to set to: 97" << endl;
 		mavlink_msg_set_mode_pack(sid, cid, &msg2, 1, 97, 65536);
 		sendMessage(&msg2);
 	} else if (hbBaseMode == 97) {
 		// set to 225
-		cout << "Attempting to set to: 225" << endl;
+		//cout << "Attempting to set to: 225" << endl;
 		mavlink_msg_set_mode_pack(sid, cid, &msg2, 1, 225, 65536);
 		sendMessage(&msg2);
 	} else if (hbBaseMode == 225) {
 		hilModeSet = true;
 		// set to 189
-		cout << "Attempting to set to: 189" << endl;
-		mavlink_msg_set_mode_pack(sid, cid, &msg2, 1, 189, 262144);
+		//cout << "Attempting to set to: 189" << endl;
+		mavlink_msg_set_mode_pack(sid, cid, &msg2, 1, 189, 262144); // 84148224
 		sendMessage(&msg2);
 	}
 }

@@ -296,43 +296,67 @@ void OnboardControlAgent::updateData(const LCreal dt) {
 	Eaagles::osg::Vec3d nextWaypoint = aVec + sVec + cVec; // inertial frame (NED with UAV origin)
 	Eaagles::osg::Vec3d uavPosition  = uav->getPosition();
 
-	if(nextWaypoint.length() == 0) {
-		// set waypoint for straight ahead (same altitude)
-		ap->setWaypoint(uavPosition + uav->getVelocity() * 500, uav->getAltitude());
-	} else {
-		ap->setWaypoint(uavPosition + nextWaypoint, -(uavPosition + nextWaypoint).z());
+	ap->setWaypoint(uavPosition + nextWaypoint, -(uavPosition + nextWaypoint).z());
 
-		//========================================================================================
-		// DRAW OCA CREATED WAYPOINTS															  
-		//========================================================================================
-		if (false) { // set to true only while simulating one swarming UAV with Reynolds vectors
-			Swarms::UAV* owner = dynamic_cast<Swarms::UAV*>(getOwnship());
-			Basic::PairStream* players = owner->getSimulation()->getPlayers();
+	//========================================================================================
+	// DRAW OCA CREATED VECTORS FOR A SINGLE SWARMING UAV
+	//========================================================================================
+	if (true) { // set to 'true' to view Reynolds vectors, 'false' otherwise
 
-			int i = 1;
-			while (true) {
-				Basic::Pair* player = players->getPosition(i);
-				if (player != 0) {
-					Simulation::Player* p = dynamic_cast<Simulation::Player*>(player->object());
-					switch (p->getID()) {
-					case 14: // vect_A
-						p->setPosition(uavPosition + aVec);
-						break;
-					case 15: // vect_S
-						p->setPosition(uavPosition + sVec);
-						break;
-					case 16: // vect_C
-						p->setPosition(uavPosition + cVec);
-						break;
-					case 17: // vect_X
-						p->setPosition(uavPosition + nextWaypoint);
-						break;
-					}
-				} else break;
-				i++;
-			}
+		int specifiedUavID = 22; // specify the ID of the UAV for which you wish to view its Reynolds vectors
+
+		Swarms::UAV* owner = dynamic_cast<Swarms::UAV*>(getOwnship());
+		Basic::PairStream* players = owner->getSimulation()->getPlayers();
+
+		int i = 1;
+		while (owner->getID() == specifiedUavID) {
+			Basic::Pair* player = players->getPosition(i);
+			if (player != 0) {
+				Simulation::Player* p = dynamic_cast<Simulation::Player*>(player->object());
+				// only draws the alignment, separation, and cohesion vectors for the specified swarming UAV
+				switch (p->getID()) {
+				case 14: // vect_A
+					p->setPosition(uavPosition + aVec);
+					cout << "vect_A updated by OCA" << endl;
+					break;
+				case 15: // vect_S
+					p->setPosition(uavPosition + sVec);
+					cout << "vect_S updated by OCA" << endl;
+					break;
+				case 16: // vect_C
+					p->setPosition(uavPosition + cVec);
+					cout << "vect_C updated by OCA" << endl;
+					break;
+				}
+			} else break;
+			i++;
 		}
-		//========================================================================================
+	}
+
+	//========================================================================================
+	// DRAW OCA CREATED VECTORS FOR MULTIPLE SWARMING UAVS
+	//========================================================================================
+	if (true) { // set to true only if the ref'd players below (by player ID) are enabled in .edl file
+		Swarms::UAV* owner = dynamic_cast<Swarms::UAV*>(getOwnship());
+		Basic::PairStream* players = owner->getSimulation()->getPlayers();
+
+		int i = 1;
+		while (true) {
+			Basic::Pair* player = players->getPosition(i);
+			if (player != 0) {
+				Simulation::Player* p = dynamic_cast<Simulation::Player*>(player->object());
+
+				if (owner->getID() == 22 && p->getID() == 18 ||
+					owner->getID() == 23 && p->getID() == 19 ||
+					owner->getID() == 24 && p->getID() == 20 ||
+					owner->getID() == 25 && p->getID() == 21) {
+					p->setPosition(uavPosition + nextWaypoint);
+					cout << "vect_X" << p->getID() - 17 << " updated by OCA" << endl;
+					break;
+				}
+			} else break;
+			i++;
+		}
 	}
 	
 	BaseClass::updateData(dt);

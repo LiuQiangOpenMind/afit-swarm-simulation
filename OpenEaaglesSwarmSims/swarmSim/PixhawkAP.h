@@ -71,14 +71,6 @@ public:
 	virtual void setPortNum(const int p) { portNum = p; }
 	virtual void setMode(const Basic::String* const m) { mode = m; }
 	virtual void setStatustexts(const Basic::String* const m) { statustexts = m; }
-	void setHbSid(const uint8_t sid)            { hbSid = sid; }
-	void setHbCid(const uint8_t cid)            { hbCid = cid; }
-	void setHbType(const uint8_t type)          { hbType = type; }
-	void setHbAutopilot(const uint8_t ap)       { hbAutopilot = ap; }
-	void setHbBaseMode(const uint8_t bmode)     { hbBaseMode = bmode; }
-	void setHbCustomMode(const uint8_t cmode)   { hbCustomMode = cmode; }
-	void setHbSystemStatus(const uint8_t stat)  { hbSystemStatus = stat; }
-	void setHbMavlinkVersion(const uint8_t ver) { hbMavlinkVersion = ver; }
 	void setMiLat(const double lat)             { miLat = lat; }
 	void setMiLon(const double lon)             { miLon = lon; }
 	void setMiAlt(const double alt)             { miAlt = alt; }
